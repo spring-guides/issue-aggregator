@@ -38,16 +38,16 @@ class IssueAggregator implements CommandLineRunner {
 	String githubToken
 
 	String[] repos = [
-			"gs-accessing-data-gemfire", "gs-accessing-data-jpa", "gs-accessing-data-mongo", "gs-accessing-data-neo4j",
-			"gs-accessing-facebook", "gs-accessing-twitter", "gs-actuator-service", "gs-android", "gs-async-method",
-			"gs-authenticating-ldap", "gs-batch-processing", "gs-caching-gemfire", "gs-consuming-rest", "gs-consuming-rest-android",
-			"gs-consuming-rest-xml-android", "gs-convert-jar-to-war", "gs-device-detection", "gs-gradle",
-			"gs-gradle-android", "gs-handling-form-submission", "gs-managing-transactions", "gs-maven",
-			"gs-maven-android", "gs-messaging-jms", "gs-messaging-rabbitmq", "gs-messaging-reactor",
-			"gs-messaging-redis", "gs-register-facebook-app", "gs-register-twitter-app", "gs-relational-data-access",
-			"gs-rest-hateoas", "gs-rest-service", "gs-scheduling-tasks", "gs-securing-web", "gs-serving-web-content",
-			"gs-spring-boot", "gs-sts", "gs-uploading-files",
-			"tut-web", "tut-rest", "tut-data"]
+		"gs-accessing-data-gemfire", "gs-accessing-data-jpa", "gs-accessing-data-mongo", "gs-accessing-data-neo4j",
+		"gs-accessing-facebook", "gs-accessing-twitter", "gs-actuator-service", "gs-android", "gs-async-method",
+		"gs-authenticating-ldap", "gs-batch-processing", "gs-caching-gemfire", "gs-consuming-rest", "gs-consuming-rest-android",
+		"gs-consuming-rest-xml-android", "gs-convert-jar-to-war", "gs-device-detection", "gs-gradle",
+		"gs-gradle-android", "gs-handling-form-submission", "gs-managing-transactions", "gs-maven",
+		"gs-maven-android", "gs-messaging-jms", "gs-messaging-rabbitmq", "gs-messaging-reactor",
+		"gs-messaging-redis", "gs-register-facebook-app", "gs-register-twitter-app", "gs-relational-data-access",
+		"gs-rest-hateoas", "gs-rest-service", "gs-scheduling-tasks", "gs-securing-web", "gs-serving-web-content",
+		"gs-spring-boot", "gs-sts", "gs-uploading-files",
+		"tut-web", "tut-rest", "tut-data"]
 
 	@Bean
 	GitHubTemplate githubTemplate() {
