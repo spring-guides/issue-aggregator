@@ -19,6 +19,7 @@ package io.spring.guideissues
 @Grab("org.springframework:spring-web:4.0.0.M3")
 @Grab("org.springframework.social:spring-social-github:1.0.0.BUILD-SNAPSHOT")
 
+import org.springframework.social.github.api.*
 import org.springframework.social.github.api.impl.*
 import org.springframework.web.client.HttpClientErrorException
 
@@ -62,12 +63,18 @@ class IssueAggregator implements CommandLineRunner {
 	 */
 	final def logger = log
 
+	def issues() {
+		repos.collect { repoName ->
+			githubTemplate.repoOperations().getIssues("spring-guides", repoName).findAll { it.state == "open" }.sort{it.number}.collect {
+				[repo: repoName, issue: it]
+			}
+		}.findAll {it.size() > 0}.flatten()
+	}
+
 	void run(String... args) {
 		try {
-			repos.each { repoName ->
-				githubTemplate.repoOperations().getIssues("spring-guides", repoName).findAll { it.state == "open" }.each {
-					logger.info "${repoName}: <${it.title}> at http://github.com/spring-guides/${repoName}/issues/${it.number}"
-				}
+			issues().each {
+				logger.info "${it.repo}: Issue ${it.issue.number} <${it.issue.title}> at ${it.issue.url}"
 			}
 		} catch (HttpClientErrorException e) {
 			log.info e.message
