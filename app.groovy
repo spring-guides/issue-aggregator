@@ -58,11 +58,6 @@ class IssueAggregator implements CommandLineRunner {
 	@Autowired
 	GitHubTemplate githubTemplate
 
-	/**
-	 * It appears that @Log log doesn't work in the closure down below, so it's captured here in a 'final'
-	 */
-	final def logger = log
-
 	def issues() {
 		repos.collect { repoName ->
 			githubTemplate.repoOperations().getIssues("spring-guides", repoName).findAll { it.state == "open" }.sort{it.number}.collect {
@@ -74,7 +69,7 @@ class IssueAggregator implements CommandLineRunner {
 	void run(String... args) {
 		try {
 			issues().each {
-				logger.info "${it.repo}: Issue ${it.issue.number} <${it.issue.title}> at ${it.issue.url}"
+				log.info "${it.repo}: Issue ${it.issue.number} <${it.issue.title}> at ${it.issue.url}"
 			}
 		} catch (HttpClientErrorException e) {
 			log.info e.message
