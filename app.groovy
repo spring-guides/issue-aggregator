@@ -80,3 +80,6 @@ class IssueAggregator implements CommandLineRunner {
 		}
 	}
 }
+
+
+
