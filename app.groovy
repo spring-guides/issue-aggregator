@@ -16,8 +16,10 @@
 
 package io.spring.guideissues
 
-@Grab("org.springframework:spring-web:4.0.0.M3")
+@Grab("org.springframework:spring-web:4.0.0.RC1")
 @Grab("org.springframework.social:spring-social-github:1.0.0.BUILD-SNAPSHOT")
+//@Grab("org.thymeleaf:thymeleaf-spring3:2.0.17")
+//@Grab("org.springframework.boot:spring-boot-starter-actuator:0.5.0.M6")
 
 import org.springframework.social.github.api.*
 import org.springframework.social.github.api.impl.*
@@ -28,9 +30,10 @@ import org.springframework.web.client.HttpClientErrorException
  *
  * @author Greg Turnquist
  */
-@Configuration
+@Grab("thymeleaf-spring3")
+@Controller
 @Log
-class IssueAggregator implements CommandLineRunner {
+class IssueAggregator {
 
 	/**
 	 * This needs to be supplied by application.properties, a file NOT to be put under source control
@@ -66,20 +69,21 @@ class IssueAggregator implements CommandLineRunner {
 		}.findAll {it.size() > 0}.flatten()
 	}
 
-	void run(String... args) {
-		try {
-			issues().each {
-				log.info "${it.repo}: Issue ${it.issue.number} <${it.issue.title}> at ${it.issue.url}"
-			}
-		} catch (HttpClientErrorException e) {
-			log.info e.message
-			e.responseHeaders.each {
-				log.info "Header => ${it}"
-			}
-			e.responseBodyAsString
-		}
-	}
+    @RequestMapping("/")
+    @ResponseBody
+    String index() {
+        String results = "<table><tr><th>Repository</th><th>Issue</th><th>Description</th></tr>"
+        issues().each() {
+            results += "<tr><td>${it.repo}</td><td><a href='${it.issue.url}'>Issue ${it.issue.number}</a></td><td>${it.issue.title}</td></tr>"
+        }
+        results += "</table>"
+        results
+    }
+
+    @RequestMapping("/view")
+    String view(Map<String,Object> model) {
+        model.putAll([issues: issues()])
+        "home"
+    }
+
 }
-
-
-
