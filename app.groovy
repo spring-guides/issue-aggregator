@@ -18,7 +18,6 @@ package io.spring.guideissues
 
 @Grab("org.springframework:spring-web:4.0.0.RC1")
 @Grab("org.springframework.social:spring-social-github:1.0.0.BUILD-SNAPSHOT")
-//@Grab("org.thymeleaf:thymeleaf-spring3:2.0.17")
 //@Grab("org.springframework.boot:spring-boot-starter-actuator:0.5.0.M6")
 
 import org.springframework.social.github.api.*
@@ -35,42 +34,42 @@ import org.springframework.web.client.HttpClientErrorException
 @Log
 class IssueAggregator {
 
-	/**
-	 * This needs to be supplied by application.properties, a file NOT to be put under source control
-	 */
-	@Value('${token}')
-	String githubToken
+    /**
+     * This needs to be supplied by application.properties, a file NOT to be put under source control
+     */
+    @Value('${token}')
+    String githubToken
 
     @Value('${org}')
     String org
 
-	String[] repos = [
-		"gs-accessing-data-gemfire", "gs-accessing-data-jpa", "gs-accessing-data-mongo", "gs-accessing-data-neo4j",
-		"gs-accessing-facebook", "gs-accessing-twitter", "gs-actuator-service", "gs-android", "gs-async-method",
-		"gs-authenticating-ldap", "gs-batch-processing", "gs-caching-gemfire", "gs-consuming-rest", "gs-consuming-rest-android",
-		"gs-consuming-rest-xml-android", "gs-convert-jar-to-war", "gs-device-detection", "gs-gradle",
-		"gs-gradle-android", "gs-handling-form-submission", "gs-managing-transactions", "gs-maven",
-		"gs-maven-android", "gs-messaging-jms", "gs-messaging-rabbitmq", "gs-messaging-reactor",
-		"gs-messaging-redis", "gs-register-facebook-app", "gs-register-twitter-app", "gs-relational-data-access",
-		"gs-rest-hateoas", "gs-rest-service", "gs-scheduling-tasks", "gs-securing-web", "gs-serving-web-content",
-		"gs-spring-boot", "gs-sts", "gs-uploading-files",
-		"tut-web", "tut-rest", "tut-data"]
+    String[] repos = [
+            "gs-accessing-data-gemfire", "gs-accessing-data-jpa", "gs-accessing-data-mongo", "gs-accessing-data-neo4j",
+            "gs-accessing-facebook", "gs-accessing-twitter", "gs-actuator-service", "gs-android", "gs-async-method",
+            "gs-authenticating-ldap", "gs-batch-processing", "gs-caching-gemfire", "gs-consuming-rest", "gs-consuming-rest-android",
+            "gs-consuming-rest-xml-android", "gs-convert-jar-to-war", "gs-device-detection", "gs-gradle",
+            "gs-gradle-android", "gs-handling-form-submission", "gs-managing-transactions", "gs-maven",
+            "gs-maven-android", "gs-messaging-jms", "gs-messaging-rabbitmq", "gs-messaging-reactor",
+            "gs-messaging-redis", "gs-register-facebook-app", "gs-register-twitter-app", "gs-relational-data-access",
+            "gs-rest-hateoas", "gs-rest-service", "gs-scheduling-tasks", "gs-securing-web", "gs-serving-web-content",
+            "gs-spring-boot", "gs-sts", "gs-uploading-files",
+            "tut-web", "tut-rest", "tut-data"]
 
-	@Bean
-	GitHubTemplate githubTemplate() {
-		new GitHubTemplate(githubToken)
-	}
+    @Bean
+    GitHubTemplate githubTemplate() {
+        new GitHubTemplate(githubToken)
+    }
 
-	@Autowired
-	GitHubTemplate githubTemplate
+    @Autowired
+    GitHubTemplate githubTemplate
 
-	def issues() {
-		repos.collect { repoName ->
-			githubTemplate.repoOperations().getIssues(org, repoName).findAll { it.state == "open" }.sort{it.number}.collect {
-				[repo: repoName, issue: it]
-			}
-		}.findAll {it.size() > 0}.flatten()
-	}
+    def issues() {
+        repos.collect { repoName ->
+            githubTemplate.repoOperations().getIssues(org, repoName).findAll { it.state == "open" }.sort { it.number }.collect {
+                [repo: repoName, issue: it]
+            }
+        }.findAll { it.size() > 0 }.flatten()
+    }
 
     @RequestMapping("/")
     @ResponseBody
@@ -84,7 +83,7 @@ class IssueAggregator {
     }
 
     @RequestMapping("/view")
-    String view(Map<String,Object> model) {
+    String view(Map<String, Object> model) {
         model.putAll([issues: issues()])
         "home"
     }
