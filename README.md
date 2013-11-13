@@ -25,7 +25,7 @@ token=<new cryptic text>
 
 By assigning it to token, it will grant this application access to your GitHub issues.
 
-== Run the application
+## Run the application
 Now you can run the application.
 
     spring run app.groovy
@@ -65,3 +65,29 @@ Resolving dependencies..
 ```
 
 Now you can hit the RESTful endpoint at <http://localhost:8080>. I'm still working on creating the web layer right now.
+
+## Customizing the repos that are reported
+
+These are the repos that I watch:
+
+```groovy
+	String[] repos = [
+		"gs-accessing-data-gemfire", "gs-accessing-data-jpa", "gs-accessing-data-mongo", "gs-accessing-data-neo4j",
+		"gs-accessing-facebook", "gs-accessing-twitter", "gs-actuator-service", "gs-android", "gs-async-method",
+		"gs-authenticating-ldap", "gs-batch-processing", "gs-caching-gemfire", "gs-consuming-rest", "gs-consuming-rest-android",
+		"gs-consuming-rest-xml-android", "gs-convert-jar-to-war", "gs-device-detection", "gs-gradle",
+		"gs-gradle-android", "gs-handling-form-submission", "gs-managing-transactions", "gs-maven",
+		"gs-maven-android", "gs-messaging-jms", "gs-messaging-rabbitmq", "gs-messaging-reactor",
+		"gs-messaging-redis", "gs-register-facebook-app", "gs-register-twitter-app", "gs-relational-data-access",
+		"gs-rest-hateoas", "gs-rest-service", "gs-scheduling-tasks", "gs-securing-web", "gs-serving-web-content",
+		"gs-spring-boot", "gs-sts", "gs-uploading-files",
+		"tut-web", "tut-rest", "tut-data"]
+```
+
+You just need to change the list.
+
+This app is current geared towards http://github.com/spring-guides. You can change the organization where the repos are found by editing this line:
+
+```groovy
+			githubTemplate.repoOperations().getIssues("spring-guides", repoName).findAll { it.state == "open" }.sort{it.number}.collect {
+```
