@@ -40,7 +40,7 @@ class IssueAggregator {
     @Value('${token}')
     String githubToken
 
-    @Value('${org}')
+    @Value('${org:spring-guides}')
     String org
 
     String[] repos = [

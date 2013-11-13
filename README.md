@@ -64,9 +64,22 @@ Resolving dependencies..
 2013-11-13 07:32:58.334  INFO 39907 --- [       runner-0] o.s.boot.SpringApplication               : Started application in 4.87 seconds
 ```
 
-Now you can hit the RESTful endpoint at <http://localhost:8080>. I'm still working on creating the web layer right now.
+You can now visit a non-templated version with basic HTML at <http://localhost:8080>. I'm still working at getting templates working.
 
-## Customizing the repos that are reported
+## Customizing the organizations and repos that are reported
+
+Right now, it looks at github.com/spring-guides to find repos. But thanks to this:
+
+```groovy
+    @Value('${org:spring-guides}')
+    String org
+```
+
+…you can customize the organization. Just put this in your **application.properties** file.
+
+```properties
+org=<my org>
+```
 
 These are the repos that I watch:
 
@@ -85,9 +98,3 @@ These are the repos that I watch:
 ```
 
 You just need to change the list.
-
-This app is current geared towards http://github.com/spring-guides. You can change the organization where the repos are found by editing this line:
-
-```groovy
-			githubTemplate.repoOperations().getIssues("spring-guides", repoName).findAll { it.state == "open" }.sort{it.number}.collect {
-```
