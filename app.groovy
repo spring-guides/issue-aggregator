@@ -41,6 +41,9 @@ class IssueAggregator {
 	@Value('${token}')
 	String githubToken
 
+    @Value('${org}')
+    String org
+
 	String[] repos = [
 		"gs-accessing-data-gemfire", "gs-accessing-data-jpa", "gs-accessing-data-mongo", "gs-accessing-data-neo4j",
 		"gs-accessing-facebook", "gs-accessing-twitter", "gs-actuator-service", "gs-android", "gs-async-method",
@@ -63,7 +66,7 @@ class IssueAggregator {
 
 	def issues() {
 		repos.collect { repoName ->
-			githubTemplate.repoOperations().getIssues("spring-guides", repoName).findAll { it.state == "open" }.sort{it.number}.collect {
+			githubTemplate.repoOperations().getIssues(org, repoName).findAll { it.state == "open" }.sort{it.number}.collect {
 				[repo: repoName, issue: it]
 			}
 		}.findAll {it.size() > 0}.flatten()
