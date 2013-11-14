@@ -28,7 +28,9 @@ By assigning it to token, it will grant this application access to your GitHub i
 ## Run the application
 Now you can run the application.
 
-    spring run app.groovy
+    spring run -cp . app.groovy
+    
+> **Note:** With Spring Boot M5, you didn't need to put "." on the classpath. M6 introduced a change that requires this so that the "templates" folder is found.
     
 You should see something like this:
 

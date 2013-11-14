@@ -37,7 +37,7 @@ class IssueAggregator {
     /**
      * This needs to be supplied by application.properties, a file NOT to be put under source control
      */
-    @Value('${token}')
+    @Value('${github.access.token}')
     String githubToken
 
     @Value('${org:spring-guides}')
@@ -72,20 +72,9 @@ class IssueAggregator {
     }
 
     @RequestMapping("/")
-    @ResponseBody
-    String index() {
-        String results = "<table><tr><th>Repository</th><th>Issue</th><th>Description</th></tr>"
-        issues().each() {
-            results += "<tr><td>${it.repo}</td><td><a href='${it.issue.url}'>Issue ${it.issue.number}</a></td><td>${it.issue.title}</td></tr>"
-        }
-        results += "</table>"
-        results
-    }
-
-    @RequestMapping("/view")
-    String view(Map<String, Object> model) {
-        model.putAll([issues: issues()])
-        "home"
+    String index(Map<String, Object> model) {
+		model.put("issues", issues())
+		"home"
     }
 
 }
