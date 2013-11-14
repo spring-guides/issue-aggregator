@@ -16,9 +16,7 @@
 
 package io.spring.guideissues
 
-@Grab("org.springframework:spring-web:4.0.0.RC1")
 @Grab("org.springframework.social:spring-social-github:1.0.0.BUILD-SNAPSHOT")
-//@Grab("org.springframework.boot:spring-boot-starter-actuator:0.5.0.M6")
 
 import org.springframework.social.github.api.*
 import org.springframework.social.github.api.impl.*
@@ -30,6 +28,9 @@ import org.springframework.web.client.HttpClientErrorException
  * @author Greg Turnquist
  */
 @Grab("thymeleaf-spring3")
+@Grab("spring-boot-starter-actuator")
+@Grab("spring-boot-starter-security")
+@Grab("spring-web")
 @Controller
 @Log
 class IssueAggregator {

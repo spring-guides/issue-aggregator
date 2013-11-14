@@ -20,7 +20,7 @@ The next step is registering a GitHub [oauth token](http://spring.io/understandi
 Create a new file right next to app.groovy. Call it **application.properties**. Grab that cryptic bit of text from up above, and add it to your new file.
 
 ```properties
-token=<new cryptic text>
+github.access.token=<new cryptic text>
 ```
 
 By assigning it to token, it will grant this application access to your GitHub issues.
@@ -51,6 +51,9 @@ You should see something like this:
 2013-11-13 07:32:54.882  INFO 39907 --- [ost-startStop-1] org.apache.catalina.loader.WebappLoader  : Unknown loader org.springframework.boot.cli.compiler.ExtendedGroovyClassLoader$DefaultScopeParentClassLoader@1517843d class org.springframework.boot.cli.compiler.ExtendedGroovyClassLoader$DefaultScopeParentClassLoader
 2013-11-13 07:32:54.887  INFO 39907 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
 2013-11-13 07:32:54.887  INFO 39907 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 971 ms
+...
+Using default password for application endpoints: 5d79bc95-78cf-44a2-bd92-27bc9bd15264
+...
 2013-11-13 07:32:55.092  INFO 39907 --- [ost-startStop-1] o.apache.tomcat.util.digester.Digester   : TLD skipped. URI: http://www.springframework.org/tags is already defined
 2013-11-13 07:32:55.096  INFO 39907 --- [ost-startStop-1] o.apache.tomcat.util.digester.Digester   : TLD skipped. URI: http://www.springframework.org/tags/form is already defined
 2013-11-13 07:32:55.134  INFO 39907 --- [ost-startStop-1] o.apache.tomcat.util.digester.Digester   : TLD skipped. URI: http://www.springframework.org/spring-social/social/tags is already defined
@@ -66,7 +69,21 @@ Resolving dependencies..
 2013-11-13 07:32:58.334  INFO 39907 --- [       runner-0] o.s.boot.SpringApplication               : Started application in 4.87 seconds
 ```
 
-You can now visit a non-templated version with basic HTML at <http://localhost:8080>. I'm still working at getting templates working.
+You can now see the list of issues at <http://localhost:8080>. You will get hit up for a username and password.
+The username is **user** and the password is printed out on your console, like what you see up above. It's different every time.
+If you want to disable security on the main page and only keep it on the management end points, add this to application.properties.
+
+```properties
+security.basic.enabled=false
+```
+
+You can change the username by adjusting application.properties like this:
+
+```properties
+security.user.name=me
+```
+
+So, you finally make it to the issue list? It may look a little bare, but it works. More is coming.
 
 ## Customizing the organizations and repos that are reported
 
