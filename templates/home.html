@@ -14,7 +14,7 @@
             </tr>
             <tr th:each="issue : ${issues}">
                 <td th:text="${issue['repo']}"></td>
-                <td><a th:href="${issue['issue'].url}">Issue <span th:text="${issue['issue'].number}"></span></a></td>
+                <td><a th:href="${issue['issue'].url}" target="_blank">Issue <span th:text="${issue['issue'].number}"></span></a></td>
                 <td th:text="${issue['issue'].assignee?.login?:'Unassigned'}"></td>
                 <td th:text="${issue['issue'].title}"></td>
             </tr>
