@@ -54,7 +54,12 @@ class IssueAggregator {
             "gs-messaging-redis", "gs-register-facebook-app", "gs-register-twitter-app", "gs-relational-data-access",
             "gs-rest-hateoas", "gs-rest-service", "gs-scheduling-tasks", "gs-securing-web", "gs-serving-web-content",
             "gs-spring-boot", "gs-sts", "gs-uploading-files",
-            "tut-web", "tut-rest", "tut-data"]
+            "tut-web", "tut-rest", "tut-data",
+            "draft-gs-consuming-rest-ios", "draft-gs-messaging-stomp-websocket", "draft-gs-consuming-rest-backbone",
+            "draft-gs-consuming-rest-restjs", "draft-gs-consuming-rest-angularjs", "draft-gs-consuming-rest-jquery",
+            "draft-gs-consuming-rest-sencha",
+            "draft-gs-template"
+    ]
 
     @Bean
     GitHubTemplate githubTemplate() {
