@@ -55,9 +55,9 @@ class IssueAggregator {
             "gs-rest-hateoas", "gs-rest-service", "gs-scheduling-tasks", "gs-securing-web", "gs-serving-web-content",
             "gs-spring-boot", "gs-sts", "gs-uploading-files",
             "tut-web", "tut-rest", "tut-data",
-            "draft-gs-consuming-rest-ios", "draft-gs-messaging-stomp-websocket", "draft-gs-consuming-rest-backbone",
-            "draft-gs-consuming-rest-restjs", "draft-gs-consuming-rest-angularjs", "draft-gs-consuming-rest-jquery",
-            "draft-gs-consuming-rest-sencha", "draft-gs-messaging-stomp-websocket-angular",
+            "gs-consuming-rest-ios", "gs-messaging-stomp-websocket", "gs-consuming-rest-backbone",
+            "gs-consuming-rest-restjs", "gs-consuming-rest-angularjs", "gs-consuming-rest-jquery",
+            "gs-consuming-rest-sencha", "draft-gs-messaging-stomp-websocket-angular", "draft-gs-rest-service-cors",
             "draft-gs-template"
     ]
 
