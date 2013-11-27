@@ -57,7 +57,7 @@ class IssueAggregator {
             "tut-web", "tut-rest", "tut-data",
             "gs-consuming-rest-ios", "gs-messaging-stomp-websocket", "gs-consuming-rest-backbone",
             "gs-consuming-rest-restjs", "gs-consuming-rest-angularjs", "gs-consuming-rest-jquery",
-            "gs-consuming-rest-sencha", "draft-gs-messaging-stomp-websocket-angular", "draft-gs-rest-service-cors",
+            "gs-consuming-rest-sencha", "draft-gs-messaging-stomp-websocket-angular", "gs-rest-service-cors",
             "draft-gs-template"
     ]
 
