@@ -17,20 +17,16 @@ The next step is registering a GitHub [oauth token](http://spring.io/understandi
 
 ![](images/test-token.png)
 
-Create a new file right next to app.groovy. Call it **application.properties**. Grab that cryptic bit of text from up above, and add it to your new file.
-
-```properties
-github.access.token=<new cryptic text>
-```
-
-By assigning it to token, it will grant this application access to your GitHub issues.
-
 ## Run the application
 Now you can run the application.
 
-    spring run app.groovy
+    GITHUB_ACCESS_TOKEN=<passcode> spring run app.groovy
     
-> **Note:** With Spring Boot M5, you didn't need to put "." on the classpath. M6 introduced a change that requires this so that the "templates" folder is found.
+This works if you run it locally. If you are going to push your app to CloudFoundry, you need to set it as an environment variable. You can do something like this:
+
+    gcf set-env <app_name> GITHUB_ACCESS_TOKEN <passcode>
+    
+Then you can push all the updates you want. If you roll the passcode, you can simply reissue the command.
     
 You should see something like this:
 
@@ -41,7 +37,7 @@ You should see something like this:
  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
   '  |____| .__|_| |_|_| |_\__, | / / / /
  =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::             (v0.5.0.M6)
+ :: Spring Boot ::             (v1.0.0.RC1)
 
 2013-11-13 07:32:53.892  INFO 39907 --- [       runner-0] o.s.boot.SpringApplication               : Starting application on retina with PID 39907 (/Users/gturnquist/.m2/repository/org/springframework/boot/spring-boot/0.5.0.M6/spring-boot-0.5.0.M6.jar started by gturnquist)
 2013-11-13 07:32:53.916  INFO 39907 --- [       runner-0] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@475deba3: startup date [Wed Nov 13 07:32:53 CST 2013]; root of context hierarchy
