@@ -3,21 +3,70 @@
     <head>
         <title>Issue Aggregator</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no" id="Viewport" name="viewport"/>
+	    <link href="https://fonts.googleapis.com/css?family=Varela+Round|Montserrat:400,700" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="http://spring.io/css/main.css"/>
+        <link rel="stylesheet" type="text/css" href="http://spring.io/css/blog.css"/>
     </head>
     <body>
-        <table>
-            <tr>
-                <th>Repository</th>
-                <th>Issue</th>
-                <th>User</th>
-                <th>Description</th>
-            </tr>
-            <tr th:each="issue : ${issues}">
-                <td th:text="${issue['repo']}"></td>
-                <td><a th:href="${issue['issue'].url}" target="_blank">Issue <span th:text="${issue['issue'].number}"></span></a></td>
-                <td th:text="${issue['issue'].assignee?.login?:'Unassigned'}"></td>
-                <td th:text="${issue['issue'].title}"></td>
-            </tr>
-        </table>
+		<script type="text/javascript">
+		    // Work around Google font rendering issues in webkit browsers on Windows 7
+		    if (navigator.userAgent.indexOf("NT 6.1") != -1) {
+		      document.body.style.WebkitTextStroke = "0.5px";
+		    }
+		  </script>
+		<div class="viewport">
+			<header class="navbar header--navbar desktop-only">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<div class="spring-logo--container">
+							<a class="spring-logo" href="/"><span></span></a>
+						</div>
+						<ul class="nav pull-right">
+							<li class="navbar-link">
+								<a href="https://github.com/spring-guides/draft-gs-template/wiki">Contributions</a>
+							</li>
+							<li class="navbar-link">
+								<a href="https://github.com/spring-guides">GitHub</a>
+							</li>
+							<li class="navbar-link">
+								<a href="http://spring.io/guides">Getting Started Guides</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</header>
+			<div class="header--container"></div>
+			<div class="container-fluid"></div>
+			<div></div>
+			<div class="body--container container-fluid">
+				<div class="main-body--wrapper">
+					<div class="blog--container">
+					<div class="meta-data--container">
+					<article class="blog--post">
+				        <table>
+							<thead>
+				            <tr>
+				                <th>Repository</th>
+				                <th>Issue</th>
+				                <th>User</th>
+				                <th>Description</th>
+				            </tr>
+							</thead>
+							<tbody>
+				            <tr th:each="issue : ${issues}">
+				                <td th:text="${issue['repo']}"></td>
+				                <td><a th:href="${issue['issue'].url}" target="_blank"><span th:text="${issue['issue'].number}"></span></a></td>
+				                <td th:text="${issue['issue'].assignee?.login?:'Unassigned'}"></td>
+				                <td th:text="${issue['issue'].title}"></td>
+				            </tr>
+							</tbody>
+				        </table>
+					</article>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
     </body>
 </html>
