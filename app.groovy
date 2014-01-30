@@ -52,7 +52,7 @@ class IssueAggregator {
             "gs-maven-android", "gs-messaging-jms", "gs-messaging-rabbitmq", "gs-messaging-reactor",
             "gs-messaging-redis", "gs-register-facebook-app", "gs-register-twitter-app", "gs-relational-data-access",
             "gs-rest-hateoas", "gs-rest-service", "gs-scheduling-tasks", "gs-securing-web", "gs-serving-web-content",
-            "gs-spring-boot", "gs-sts", "gs-uploading-files",
+            "gs-spring-boot", "gs-sts", "gs-uploading-files", "gs-integration",
             "tut-web", "tut-rest", "tut-data",
             "gs-consuming-rest-ios", "gs-messaging-stomp-websocket", "gs-consuming-rest-backbone",
             "gs-consuming-rest-restjs", "gs-consuming-rest-angularjs", "gs-consuming-rest-jquery",
