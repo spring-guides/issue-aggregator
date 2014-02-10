@@ -44,7 +44,7 @@ class IssueAggregator {
     String org
 
     String[] repos = [
-            "gs-accessing-data-gemfire", "gs-accessing-data-jpa", "gs-accessing-data-mongo", "gs-accessing-data-neo4j",
+            "gs-accessing-data-gemfire", "gs-accessing-data-jpa", "gs-accessing-data-mongodb", "gs-accessing-data-neo4j",
             "gs-accessing-facebook", "gs-accessing-twitter", "gs-actuator-service", "gs-android", "gs-async-method",
             "gs-authenticating-ldap", "gs-batch-processing", "gs-caching-gemfire", "gs-consuming-rest", "gs-consuming-rest-android",
             "gs-consuming-rest-xml-android", "gs-convert-jar-to-war", "gs-device-detection", "gs-gradle",
