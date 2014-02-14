@@ -65,19 +65,7 @@ Resolving dependencies..
 2013-11-13 07:32:58.334  INFO 39907 --- [       runner-0] o.s.boot.SpringApplication               : Started application in 4.87 seconds
 ```
 
-You can now see the list of issues at <http://localhost:8080>. You will get hit up for a username and password.
-The username is **user** and the password is printed out on your console, like what you see up above. It's different every time.
-If you want to disable security on the main page and only keep it on the management end points, add this to application.properties.
-
-```properties
-security.basic.enabled=false
-```
-
-You can change the username by adjusting application.properties like this:
-
-```properties
-security.user.name=me
-```
+You can now see the list of issues at <http://localhost:8080>.
 
 So, you finally make it to the issue list? It may look a little bare, but it works. More is coming.
 
