@@ -58,8 +58,7 @@ class IssueAggregator {
             "gs-consuming-rest-restjs", "gs-consuming-rest-angularjs", "gs-consuming-rest-jquery",
             "gs-consuming-rest-sencha", "draft-gs-messaging-stomp-websocket-angular", "gs-rest-service-cors",
             "gs-accessing-data-rest", "gs-accessing-mongodb-data-rest", "gs-accessing-neo4j-data-rest", "gs-accessing-gemfire-data-rest",
-            "gs-spring-boot-cli-and-js",
-            "draft-gs-web-service",
+            "gs-spring-boot-cli-and-js", "gs-consuming-web-service",
             //"draft-messaging-stomp-msgsjs",
             "draft-gs-template"
     ]
