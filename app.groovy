@@ -60,7 +60,7 @@ class IssueAggregator {
             "gs-accessing-data-rest", "gs-accessing-mongodb-data-rest", "gs-accessing-neo4j-data-rest", "gs-accessing-gemfire-data-rest",
             "gs-spring-boot-cli-and-js", "gs-consuming-web-service",
             //"draft-messaging-stomp-msgsjs",
-            "draft-gs-template"
+            "getting-started-guides"
     ]
 
     @Bean
