@@ -17,10 +17,15 @@
 package io.spring.guideissues
 
 @Grab("org.springframework.social:spring-social-github:1.0.0.BUILD-SNAPSHOT")
+@Grab('org.jsoup:jsoup:1.6.1')
+
+import org.jsoup.nodes.Document
+import org.jsoup.Jsoup
 
 import org.springframework.social.github.api.*
 import org.springframework.social.github.api.impl.*
 import org.springframework.web.client.HttpClientErrorException
+
 
 /**
  * Scan all Spring Guides for open issues and show them in one place
@@ -43,27 +48,6 @@ class IssueAggregator {
     @Value('${org:spring-guides}')
     String org
 
-    String[] repos = [
-            "gs-accessing-data-gemfire", "gs-accessing-data-jpa", "gs-accessing-data-mongodb", "gs-accessing-data-neo4j",
-            "gs-accessing-facebook", "gs-accessing-twitter", "gs-actuator-service", "gs-android", "gs-async-method",
-            "gs-authenticating-ldap", "gs-batch-processing", "gs-caching-gemfire", "gs-consuming-rest", "gs-consuming-rest-android",
-            "gs-consuming-rest-xml-android", "gs-convert-jar-to-war", "gs-device-detection", "gs-gradle",
-            "gs-gradle-android", "gs-handling-form-submission", "gs-managing-transactions", "gs-maven",
-            "gs-maven-android", "gs-messaging-jms", "gs-messaging-rabbitmq", "gs-messaging-reactor",
-            "gs-messaging-redis", "gs-register-facebook-app", "gs-register-twitter-app", "gs-relational-data-access",
-            "gs-rest-hateoas", "gs-rest-service", "gs-scheduling-tasks", "gs-securing-web", "gs-serving-web-content",
-            "gs-spring-boot", "gs-sts", "gs-uploading-files", "gs-integration", "gs-validating-form-input", 
-            "tut-web", "tut-rest", "tut-data",
-            "gs-consuming-rest-ios", "gs-messaging-stomp-websocket", "gs-consuming-rest-backbone",
-            "gs-consuming-rest-restjs", "gs-consuming-rest-angularjs", "gs-consuming-rest-jquery",
-            "gs-consuming-rest-sencha", "draft-gs-messaging-stomp-websocket-angular", "gs-rest-service-cors",
-            "gs-accessing-data-rest", "gs-accessing-mongodb-data-rest", "gs-accessing-neo4j-data-rest", "gs-accessing-gemfire-data-rest",
-            "gs-spring-boot-cli-and-js", "gs-consuming-web-service",
-            "gs-reactor-thumbnailer",
-            //"draft-messaging-stomp-msgsjs",
-            "getting-started-guides"
-    ]
-
     @Bean
     GitHubTemplate githubTemplate() {
         new GitHubTemplate(githubToken)
@@ -72,7 +56,7 @@ class IssueAggregator {
     @Autowired
     GitHubTemplate githubTemplate
 
-    def issues() {
+    def issues(def repos) {
         repos.collect { repoName ->
             githubTemplate.repoOperations().getIssues(org, repoName).findAll { it.state == "open" }.sort { it.number }.collect {
                 [repo: repoName, issue: it]
@@ -82,7 +66,16 @@ class IssueAggregator {
 
     @RequestMapping("/")
     String index(Map<String, Object> model) {
-		model.put("issues", issues())
+        // Scan for all guides
+        Document doc = Jsoup.connect("http://spring.io/guides").get()
+
+        def repos = doc.select("a.guide--title")
+                .findAll { !it.attr("href").contains("tutorials") }
+                .collect {
+            "gs-" + (it.attr("href") - "/guides/gs/" - "/")
+        }
+
+        model.put("issues", issues(repos))
 		"home"
     }
 
