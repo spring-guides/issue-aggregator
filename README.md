@@ -2,6 +2,8 @@ Are you managing multiple projects hosted at GitHub? Wish there was a way to see
 
 issue-aggregator is a [Spring Boot](http://projects.spring.io/spring-boot/) application that uses the power of [Spring Social GitHub](http://projects.spring.io/spring-social-github/) to query for issues across multiple repositories.
 
+> *NOTE:* See http://bit.ly/app-mgmt-tools-with-boot for a webinar that walks through this app.
+
 ## Getting Started
 
 You first need to [install Spring Boot](https://github.com/spring-projects/spring-boot#installing-the-cli). I won't show that here because the instructions behind that link are pretty detailed. I'll just assume you got things set up right.
