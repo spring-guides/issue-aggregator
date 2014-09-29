@@ -4,6 +4,8 @@ issue-aggregator is a [Spring Boot](http://projects.spring.io/spring-boot/) appl
 
 > **NOTE:** See http://bit.ly/app-mgmt-tools-with-boot for a webinar that walks through this app.
 
+[![Webinar showing this app](http://i.ytimg.com/vi/j3rrqOV68ik/mqdefault.jpg)](http://bit.ly/app-mgmt-tools-with-boot)
+
 ## Getting Started
 
 You first need to [install Spring Boot](https://github.com/spring-projects/spring-boot#installing-the-cli). I won't show that here because the instructions behind that link are pretty detailed. I'll just assume you got things set up right.
