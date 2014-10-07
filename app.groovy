@@ -56,14 +56,24 @@ class IssueAggregator {
     @Autowired
     GitHubTemplate githubTemplate
 
+    /**
+     * Take an array of repos, find all open issues, sort by issue number/by repo, then flatten
+     * into a single list.
+     */ 
     def issues(def repos) {
-        repos.collect { repoName ->
-            githubTemplate.repoOperations().getIssues(org, repoName).findAll { it.state == "open" }.sort { it.number }.collect {
-                [repo: repoName, issue: it]
-            }
-        }.findAll { it.size() > 0 }.flatten()
+        repos
+            .collect { repoName ->
+                githubTemplate.repoOperations().getIssues(org, repoName)
+                    .findAll { it.state == "open" }
+                    .sort { it.number }
+                    .collect { [repo: repoName, issue: it] } }
+            .findAll { it.size() > 0 }
+            .flatten()
     }
 
+    /**
+     * Connection to spring.io, find all guides, extract repos, and then fetch issues.
+     */
     @RequestMapping("/")
     String index(Map<String, Object> model) {
         // Scan for all guides
@@ -71,9 +81,7 @@ class IssueAggregator {
 
         def repos = doc.select("a.guide--title")
                 .findAll { !it.attr("href").contains("tutorials") }
-                .collect {
-            "gs-" + (it.attr("href") - "/guides/gs/" - "/")
-        }
+                .collect { "gs-" + (it.attr("href") - "/guides/gs/" - "/") }
 
         model.put("issues", issues(repos))
 		"home"
