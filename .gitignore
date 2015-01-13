@@ -2,3 +2,7 @@
 *.iml
 application.properties
 *.jar
+*.css
+*.css.map
+bower_components
+.sass-cache
