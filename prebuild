@@ -1,0 +1,20 @@
+#!/bin/bash
+#############################################
+# prebuild
+#
+# Use this script to fetch and build everything
+# needed to package up the app.
+#
+# You need to run it at least once after cloning
+# the project, and before running "spring jar"
+#############################################
+
+# Switch to the static folder
+cd static
+
+# Install all bower packages
+bower install
+
+# Build the sass-based CSS file
+sass main.scss main.css --style compressed
+

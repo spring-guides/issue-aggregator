@@ -1,0 +1,10 @@
+#!/bin/bash
+#############################################
+# dev
+#
+# Use this script in a separate shell to constantly
+# watch main.scss for changes, and rebuild main.css
+# as needed
+#############################################
+
+sass --watch static/main.scss:static/main.css 
