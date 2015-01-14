@@ -1,0 +1,5 @@
+#!/bin/bash
+
+./prebuild
+
+ spring jar --exclude='**/bower*,**/bower_components/**,**/.sass-cache/**' issue-aggregator.jar app.groovy 
