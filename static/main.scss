@@ -109,3 +109,7 @@ h1 {
 tbody tr:nth-child(odd) {
   background-color: $spring-bright-white;
 }
+
+th {
+  text-align: left;
+}
