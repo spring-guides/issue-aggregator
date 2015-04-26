@@ -6,7 +6,7 @@ before_install:
   - npm install -g bower
   - wget http://repo.spring.io/release/org/springframework/boot/spring-boot-cli/1.2.3.RELEASE/spring-boot-cli-1.2.3.RELEASE-bin.tar.gz
   - tar xvfz spring-boot-cli-1.2.3.RELEASE-bin.tar.gz
-  - echo $PATH
-  - ln -s spring-1.2.3.RELEASE/bin/spring ~/bin/spring
+  - export PATH=$PATH:spring-1.2.3.RELEASE/bin/spring
+  - spring --version
 script:
   - ./build
