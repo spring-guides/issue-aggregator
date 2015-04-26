@@ -21,3 +21,4 @@ deploy:
   space: Guides
   on:
     repo: gregturn/issue-aggregator
+    branch: master
