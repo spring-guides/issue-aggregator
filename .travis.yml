@@ -4,5 +4,7 @@ jdk:
 before_install:
   - gem install sass
   - npm install -g bower
+  - wget http://repo.spring.io/release/org/springframework/boot/spring-boot-cli/1.2.3.RELEASE/spring-boot-cli-1.2.3.RELEASE-bin.tar.gz
+  - tar xvfz spring-boot-cli-1.2.3.RELEASE-bin.tar.gz
 script:
   - ./build
