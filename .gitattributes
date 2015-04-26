@@ -1,2 +1,2 @@
-build text eol=crlf
-prebuild text eol=crlf
+build text eol=lf
+prebuild text eol=lf
