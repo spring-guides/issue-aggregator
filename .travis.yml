@@ -1,0 +1,8 @@
+language: groovy
+jdk:
+	- oraclejdk8
+before_install:
+	- gem install sass
+	- npm install -g bower
+script:
+	- ./build
