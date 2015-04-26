@@ -1,12 +1,23 @@
 language: groovy
 jdk:
-  - oraclejdk8
+- oraclejdk8
 before_install:
-  - gem install sass
-  - npm install -g bower
-  - wget http://repo.spring.io/release/org/springframework/boot/spring-boot-cli/1.2.3.RELEASE/spring-boot-cli-1.2.3.RELEASE-bin.tar.gz
-  - tar xvfz spring-boot-cli-1.2.3.RELEASE-bin.tar.gz
-  - export PATH=$PATH:spring-1.2.3.RELEASE/bin
-  - spring --version
+- gem install sass
+- npm install -g bower
+- wget http://repo.spring.io/release/org/springframework/boot/spring-boot-cli/1.2.3.RELEASE/spring-boot-cli-1.2.3.RELEASE-bin.tar.gz
+- tar xvfz spring-boot-cli-1.2.3.RELEASE-bin.tar.gz
+- export PATH=$PATH:spring-1.2.3.RELEASE/bin
+- spring --version
 script:
-  - ./build
+- ./build
+deploy:
+  provider:
+    provider: cloudfoundry
+  api: https://api.run.pivotal.io
+  username: gturnquist@pivotal.io
+  password:
+    secure: NkMgsRbR+zA1t70bFcrjFoXLVToTS8Qi4KR1ogqTMao9eC/0hCj4yQro+VUPql1f+8QcAWgYFNqUjLijpacGAqwyHSovSy2Pk+VA31SmSR0vyKwu9VZZ5wRALqDpIpZdt2f/2eG4sZprbamjPeRNcOqzeRPt7nxbaLt9iAjouak=
+  organization: spring.io
+  space: Guides
+  on:
+    repo: gregturn/issue-aggregator
