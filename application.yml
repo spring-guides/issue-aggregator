@@ -1,0 +1,6 @@
+description:
+  sections:
+    - 
+      prefix: "gs-"
+      toStrip: "/guides/gs/"
+      section: "/guides"

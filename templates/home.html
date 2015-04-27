@@ -18,16 +18,16 @@
             --><div class="layout__item palm-1/1 lap-and-up-1/2">
                 <ul class="site-nav__list">
                     <li class="site-nav__item">
-                        <a class="btn btn--small" href="https://github.com/spring-guides/draft-gs-template/wiki">Contributions</a>
+                        <a class="btn btn--small" th:href="'https://github.com/' + ${org} + '/getting-started-guides/wiki'">Contributions</a>
                     </li>
                     <li class="site-nav__item">
-                        <a class="btn btn--small" href="https://github.com/spring-guides">GitHub</a>
+                        <a class="btn btn--small" th:href="'https://github.com/' + ${org}">GitHub</a>
                     </li>
                     <li class="site-nav__item">
-                        <a class="btn btn--small" href="http://spring.io/guides">Getting Started Guides</a>
+                        <a class="btn btn--small" th:href="${site} + '/guides'">Guides</a>
                     </li>
                     <li class="site-nav__item">
-                        <a class="btn btn--small" href="http://drone-aggregator.guides.spring.io/">Status</a>
+                        <a class="btn btn--small" th:href="${droneSite}">Status</a>
                     </li>
                 </ul>
             </div>

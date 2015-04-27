@@ -25,7 +25,7 @@ import org.jsoup.Jsoup
 import org.springframework.social.github.api.*
 import org.springframework.social.github.api.impl.*
 import org.springframework.web.client.HttpClientErrorException
-
+import org.springframework.boot.context.properties.ConfigurationProperties
 
 /**
  * Scan all Spring Guides for open issues and show them in one place
@@ -47,6 +47,18 @@ class IssueAggregator {
 
     @Value('${org:spring-guides}')
     String org
+
+    @Value('${site:http://spring.io}')
+    String site
+
+    @Value('${css.selector:a.guide--title}')
+    String cssSelector
+
+    @Value('${drone.site:http://drone-aggregator.guides.spring.io/')
+    String droneSite
+
+    @Autowired
+    Description description
 
     @Bean
     GitHubTemplate githubTemplate() {
@@ -76,15 +88,43 @@ class IssueAggregator {
      */
     @RequestMapping("/")
     String index(Map<String, Object> model) {
-        // Scan for all guides
-        Document doc = Jsoup.connect("http://spring.io/guides").get()
 
-        def repos = doc.select("a.guide--title")
-                .findAll { !it.attr("href").contains("tutorials") }
-                .collect { "gs-" + (it.attr("href") - "/guides/gs/" - "/") }
+        def repos = []
+
+        description.sections.each { section ->
+
+            Document doc = Jsoup.connect("${site}${section.section}").get()
+
+            repos += doc.select(cssSelector)
+                    .findAll { !it.attr("href").contains("tutorials") }
+                    .collect { section.prefix + (it.attr("href") - section.toStrip - "/") }
+
+        }
 
         model.put("issues", issues(repos))
-		"home"
+        model.put("site", site)
+        model.put("org", org)
+        model.put("droneSite", droneSite)
+        "home"
     }
 
+}
+
+@Component
+@ConfigurationProperties(prefix="description")
+class Description {
+    List<Section> sections
+
+    public String toString() {
+        def results = ""
+        sections.each { results += it.toString() }
+    }
+}
+
+class Section {
+    String prefix
+    String toStrip
+    String section
+
+    public String toString() { "${prefix} ${toStrip} ${section}" }
 }
