@@ -11,6 +11,7 @@ before_install:
 script:
 - ./build
 deploy:
+  edge: true
   provider: cloudfoundry
   api: https://api.run.pivotal.io
   username: gturnquist@pivotal.io
