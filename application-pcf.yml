@@ -1,0 +1,14 @@
+description:
+  sections:
+    - 
+      prefix: "gs-"
+      toStrip: "/guides/gs/"
+      section: "/guides"
+    -
+      prefix: "pat-"
+      toStrip: "/patterns/"
+      section: "/patterns"
+    -
+      prefix: "ref-"
+      toStrip: "/reference/"
+      section: "/reference"
