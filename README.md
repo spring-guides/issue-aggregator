@@ -1,3 +1,5 @@
+# Issue Aggregator [![Build Status](https://travis-ci.org/gregturn/issue-aggregator.svg?branch=master)](https://travis-ci.org/gregturn/issue-aggregator)
+
 Are you managing multiple projects hosted at GitHub? Wish there was a way to see all the issues for your projects? Then you've come to the right place.
 
 issue-aggregator is a [Spring Boot](http://projects.spring.io/spring-boot/) application that uses the power of [Spring Social GitHub](http://projects.spring.io/spring-social-github/) to query for issues across multiple repositories.
