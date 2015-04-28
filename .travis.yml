@@ -23,3 +23,6 @@ deploy:
   on:
     repo: gregturn/issue-aggregator
     branch: master
+notifications:
+  slack:
+    secure: Z7xfbWEBn6vn+mplLM64G/YWK4+6wS4S98rMkib2XvA8GwTLX7IWvI6T66lpppvkYF3HaE7XXvA4Gj2EGGdG176K44Nh7UC2wuEv/8xl4o0mh8Ezs/cg2WzivNSL+y7kP49Jkt3/NL3y2nRwuprjqP0FxnaHCCTRUUCWfbUYsEc=
