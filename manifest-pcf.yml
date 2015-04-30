@@ -1,0 +1,9 @@
+---
+# Standard deployment info for CF.
+# NOTE: You don't need this for your own version of this app
+applications:
+- name: issue-aggregator
+  instances: 1
+  host: issue-aggregator
+  domain: architecture.pivotal.io
+  path: issue-aggregator.jar
