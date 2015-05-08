@@ -9,20 +9,13 @@ before_install:
 - tar xvfz spring-boot-cli-1.2.3.RELEASE-bin.tar.gz
 - export PATH=$PATH:spring-1.2.3.RELEASE/bin
 - spring --version
+- wget -O cf-linux-amd64.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.11.2&source=github-rel"
+- tar xvfz cf-linux-amd64.tgz
+- chmod 755 ./cf
 script:
 - ./build
-deploy:
-  edge: true
-  provider: cloudfoundry
-  api: https://api.run.pivotal.io
-  username: gturnquist@pivotal.io
-  password:
-    secure: NkMgsRbR+zA1t70bFcrjFoXLVToTS8Qi4KR1ogqTMao9eC/0hCj4yQro+VUPql1f+8QcAWgYFNqUjLijpacGAqwyHSovSy2Pk+VA31SmSR0vyKwu9VZZ5wRALqDpIpZdt2f/2eG4sZprbamjPeRNcOqzeRPt7nxbaLt9iAjouak=
-  organization: spring.io
-  space: Guides
-  on:
-    repo: gregturn/issue-aggregator
-    branch: master
+after_success:
+- if [ "${TRAVIS_PULL_REQUEST}" = "false" -a "${TRAVIS_BRANCH}" = "master" ]; then ./deploy ; fi
 notifications:
   slack:
-    secure: Z7xfbWEBn6vn+mplLM64G/YWK4+6wS4S98rMkib2XvA8GwTLX7IWvI6T66lpppvkYF3HaE7XXvA4Gj2EGGdG176K44Nh7UC2wuEv/8xl4o0mh8Ezs/cg2WzivNSL+y7kP49Jkt3/NL3y2nRwuprjqP0FxnaHCCTRUUCWfbUYsEc=
+    secure: gmYkjOhLkUAlu2ml4daoSN+iu5dhrjEooeRwKtwNQHTSBLqjNQPw/iJ8yj+sGpaqqTiBtFy/PvbQ3OeOrgp88uCv3YrYCI1M5cHh7OlX/Z4MIdOMpRmJLf8wNnPLcKqzhpII4sjD9R/J/MlqfhpJFqqiikiP5nTVziSQV5VqWU4=
