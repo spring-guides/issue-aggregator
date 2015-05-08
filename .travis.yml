@@ -15,7 +15,8 @@ before_install:
 script:
 - ./build
 after_success:
-- if [ "${TRAVIS_PULL_REQUEST}" = "false" -a "${TRAVIS_BRANCH}" = "master" ]; then ./deploy ; fi
+- if [ "${TRAVIS_PULL_REQUEST}" = "false" -a "${TRAVIS_BRANCH}" = "master" ]; then
+  ./deploy ; fi
 notifications:
   slack:
-    secure: gmYkjOhLkUAlu2ml4daoSN+iu5dhrjEooeRwKtwNQHTSBLqjNQPw/iJ8yj+sGpaqqTiBtFy/PvbQ3OeOrgp88uCv3YrYCI1M5cHh7OlX/Z4MIdOMpRmJLf8wNnPLcKqzhpII4sjD9R/J/MlqfhpJFqqiikiP5nTVziSQV5VqWU4=
+    secure: ltF1XYZHmmBQfRWW9szBNURgnhaSf+L5o2V60mzQhDQne6okSd6ridSemSqE3CLsMJ5QqOOGnjELH/QQ+1Az9x0c0wVxAfIpDbFlwuR2NaxLMzqVyx5dHDUxQTsRwSgDEggF87sh1LjDBpAPq5PLMernBE9/cuEi0QyXUru4J8c=
