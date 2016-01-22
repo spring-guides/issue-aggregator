@@ -54,7 +54,7 @@ class IssueAggregator {
     @Value('${css.selector:a.guide--title}')
     String cssSelector
 
-    @Value('${drone.site:http://drone-aggregator.guides.spring.io/}')
+    @Value('${drone.site:http://travis-aggregator.guides.spring.io/}')
     String droneSite
 
     @Autowired
