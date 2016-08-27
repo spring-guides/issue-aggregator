@@ -96,7 +96,7 @@ class IssueAggregator {
             Document doc = Jsoup.connect("${site}${section.section}").get()
 
             repos += doc.select(cssSelector)
-                    .findAll { !it.attr("href").contains("tutorials") }
+                    .findAll { !it.attr("href").contains("tutorials") && !it.attr("href").contains("topicals") }
                     .collect { section.prefix + (it.attr("href") - section.toStrip - "/") }
 
         }
