@@ -9,8 +9,8 @@ before_install:
 - tar xvfz spring-boot-cli-1.4.0.RELEASE-bin.tar.gz
 - export PATH=$PATH:spring-1.4.0.RELEASE/bin
 - spring --version
-- wget -O cf-linux-amd64.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.11.2&source=github-rel"
-- tar xvfz cf-linux-amd64.tgz
+- wget -O cf-linux.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github"
+- tar xvfz cf-linux.tgz
 - chmod 755 ./cf
 script:
 - ./build
@@ -19,4 +19,4 @@ after_success:
   ./deploy ; fi
 notifications:
   slack:
-    secure: HStV2wAWvnkayC7Zv5QAAS+rlxH3C0KVqQO4TeurFsLGFOM6laDZRhKYMDMQVUYV4P30dX6Hyz85lP+g8lHf7bLu074bbX/tFoK2E4XHPkvAWNTnTMPCBusE1wyho86vYsanNliUMfJrE09SEoj1lOPYH0PUGTEvMCsNyIQmZ6I=
+    secure: POHUW3IRwRaKeLhvOrhZDXEiJJIGU/Uzbin99orRkN2EMtkX2qSyWXIXZuUm6oF87eUUYG2kVZNReHEzWVFd4FEmhjSZ1/AHJJ8Lr2HXBhc98cRvi+RmTrLSXBEuCY+g9WCJyWwSSjdY+zNYfF96o0z9HHIHkh9504nqqu3IKRc=
