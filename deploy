@@ -7,7 +7,3 @@
 # Target spring.io and deploy
 ./cf target -o spring.io -s Guides
 ./cf push -f manifest.yml
-
-# Target Spring PCF and deploy
-./cf target -o pivotal -s pcf-architecture
-./cf push -f manifest-pcf.yml
