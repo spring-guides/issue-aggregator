@@ -19,4 +19,4 @@ after_success:
   ./deploy ; fi
 notifications:
   slack:
-    secure: POHUW3IRwRaKeLhvOrhZDXEiJJIGU/Uzbin99orRkN2EMtkX2qSyWXIXZuUm6oF87eUUYG2kVZNReHEzWVFd4FEmhjSZ1/AHJJ8Lr2HXBhc98cRvi+RmTrLSXBEuCY+g9WCJyWwSSjdY+zNYfF96o0z9HHIHkh9504nqqu3IKRc=
+    secure: KiK2hRrVGM9d0dHuovdbj4KYBKimkobkduIna9qjnKe/67OtM2PMetIGjNQL4ZuKHIOu2uTArrS1XMmXsv9ifGVeaB51407mp/9XTnwItYLAus6t79fsc0gmUfrWh9+g3n9tCekZq8ttz0TreC6vz7/Qmk561dNtixxFLiomAIs=
