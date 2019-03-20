@@ -2,17 +2,17 @@
 
 Are you managing multiple projects hosted at GitHub? Wish there was a way to see all the issues for your projects? Then you've come to the right place.
 
-issue-aggregator is a [Spring Boot](http://projects.spring.io/spring-boot/) application that uses the power of [Spring Social GitHub](http://projects.spring.io/spring-social-github/) to query for issues across multiple repositories.
+issue-aggregator is a [Spring Boot](https://projects.spring.io/spring-boot/) application that uses the power of [Spring Social GitHub](https://projects.spring.io/spring-social-github/) to query for issues across multiple repositories.
 
-> **NOTE:** See http://bit.ly/app-mgmt-tools-with-boot for a webinar that walks through this app.
+> **NOTE:** See https://bit.ly/app-mgmt-tools-with-boot for a webinar that walks through this app.
 
-[![Webinar showing this app](http://i.ytimg.com/vi/j3rrqOV68ik/mqdefault.jpg)](http://bit.ly/app-mgmt-tools-with-boot)
+[![Webinar showing this app](https://i.ytimg.com/vi/j3rrqOV68ik/mqdefault.jpg)](https://bit.ly/app-mgmt-tools-with-boot)
 
 ## Getting Started
 
 You first need to [install Spring Boot](https://github.com/spring-projects/spring-boot#installing-the-cli). I won't show that here because the instructions behind that link are pretty detailed. I'll just assume you got things set up right.
 
-The next step is registering a GitHub [oauth token](http://spring.io/understanding/oauth). To do that follow these steps:
+The next step is registering a GitHub [oauth token](https://spring.io/understanding/oauth). To do that follow these steps:
 
 1. Go to https://github.com/settings/applications. (If you don't have a GitHub profile, this app isn't much use, ehh?)
 2. Underneath **Personal Access Tokens** click [Create new token](https://github.com/settings/tokens/new).

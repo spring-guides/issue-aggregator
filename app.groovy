@@ -48,7 +48,7 @@ class IssueAggregator {
     @Value('${org:spring-guides}')
     String org
 
-    @Value('${site:http://spring.io}')
+    @Value('${site:https://spring.io}')
     String site
 
     @Value('${css.selector:a.guide--title}')
