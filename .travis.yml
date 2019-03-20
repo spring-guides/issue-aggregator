@@ -5,7 +5,7 @@ sudo: required
 before_install:
 - gem install sass
 - npm install -g bower
-- wget http://repo.spring.io/release/org/springframework/boot/spring-boot-cli/1.4.0.RELEASE/spring-boot-cli-1.4.0.RELEASE-bin.tar.gz
+- wget https://repo.spring.io/release/org/springframework/boot/spring-boot-cli/1.4.0.RELEASE/spring-boot-cli-1.4.0.RELEASE-bin.tar.gz
 - tar xvfz spring-boot-cli-1.4.0.RELEASE-bin.tar.gz
 - export PATH=$PATH:spring-1.4.0.RELEASE/bin
 - spring --version
