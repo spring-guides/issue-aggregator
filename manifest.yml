@@ -6,4 +6,4 @@ applications:
   instances: 1
   host: issue-aggregator
   domain: guides.spring.io
-  path: issue-aggregator.jar
+  path: target/issue-aggregator-0.0.1-SNAPSHOT.jar

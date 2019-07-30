@@ -3,17 +3,11 @@ jdk:
 - oraclejdk8
 sudo: required
 before_install:
-- gem install sass
-- npm install -g bower
-- wget http://repo.spring.io/release/org/springframework/boot/spring-boot-cli/1.4.0.RELEASE/spring-boot-cli-1.4.0.RELEASE-bin.tar.gz
-- tar xvfz spring-boot-cli-1.4.0.RELEASE-bin.tar.gz
-- export PATH=$PATH:spring-1.4.0.RELEASE/bin
-- spring --version
 - wget -O cf-linux.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github"
 - tar xvfz cf-linux.tgz
 - chmod 755 ./cf
 script:
-- ./build
+- ./mvnw clean package
 after_success:
 - if [ "${TRAVIS_PULL_REQUEST}" = "false" -a "${TRAVIS_BRANCH}" = "master" ]; then
   ./deploy ; fi
