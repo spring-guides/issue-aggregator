@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'/>
+    <title>Issue Aggregator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0"/>
+    <link rel="stylesheet" href="main.css"/>
+</head>
+<body>
+
+<header class="page wrapper">
+
+    <nav>
+        <div class>
+            <h1>Issue Aggregator</h1>
+        </div>
+        <div>
+            <ul>
+                <li>
+                    <a th:href="'https://github.com/' + ${org} + '/getting-started-guides/wiki'">Contributions</a>
+                </li>
+                <li>
+                    <a th:href="'https://github.com/' + ${org}">GitHub</a>
+                </li>
+                <li>
+                    <a th:href="${site} + '/guides'">Guides</a>
+                </li>
+                <li>
+                    <a th:href="${droneSite}">Status</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+</header>
+
+<section class="wrapper">
+    <table>
+        <thead>
+        <tr>
+            <th>Repository</th>
+            <th>Issue</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="issue : ${issues}">
+            <td th:text="${issue.repo}"></td>
+            <td><a th:href="${issue.html_url}" target="_blank"><span th:text="${issue.number}"></span></a></td>
+            <td th:text="${issue.title}"></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+</body>
+</html>
