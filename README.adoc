@@ -1,4 +1,4 @@
-= Issue Aggregator image:https://travis-ci.org/spring-guides/issue-aggregator.svg?branch=master[Build Status,link=https://travis-ci.org/spring-guides/issue-aggregator]
+= Issue Aggregator image:https://travis-ci.org/spring-guides/issue-aggregator.svg?branch=main[Build Status,link=https://travis-ci.org/spring-guides/issue-aggregator]
 
 Are you managing multiple projects hosted at GitHub? Wish there was a way to see all the issues for your projects? Then you've come to the right place.
 

@@ -9,7 +9,7 @@ before_install:
 script:
 - ./mvnw clean package
 after_success:
-- if [ "${TRAVIS_PULL_REQUEST}" = "false" -a "${TRAVIS_BRANCH}" = "master" ]; then
+- if [ "${TRAVIS_PULL_REQUEST}" = "false" -a "${TRAVIS_BRANCH}" = "main" ]; then
   ./deploy ; fi
 notifications:
   slack:
